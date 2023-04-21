@@ -11726,7 +11726,7 @@ const {
 const configReducer = configSlice.reducer;
 const selectCategoryList = (state) => state.config.categoryList;
 const initialState = {
-  imgUrl: "./img"
+  imgUrl: "https://felicia1910.github.io/ViewYata-React/img"
 };
 const IconfigSlice = createSlice({
   name: "Iconfig",
@@ -22780,7 +22780,7 @@ const __vitePreload = function preload(baseModule, deps, importerUrl) {
   })).then(() => baseModule());
 };
 const NavBarButtons = reactExports.lazy(() => __vitePreload(() => Promise.resolve().then(() => NavBarButtons$2), true ? void 0 : void 0, import.meta.url));
-const SessionModal = reactExports.lazy(() => __vitePreload(() => import("./SessionExpiredModal-479b4435.js"), true ? [] : void 0, import.meta.url));
+const SessionModal = reactExports.lazy(() => __vitePreload(() => import("./SessionExpiredModal-d8a9cdae.js"), true ? [] : void 0, import.meta.url));
 const Navbar = () => {
   useAppDispatch();
   useNavigate();
@@ -22867,7 +22867,7 @@ const Header = () => {
             "div",
             {
               className: "flex items-center justify-center transition-all ease-in-out duration-300 " + (atSpecialPage ? "w-full" : `w-48 lg:w-80 ${atAdminMemberLoginPage || isAdmin ? "" : "cursor-pointer "}`),
-              onClick: () => atSpecialPage || atAdminMemberLoginPage || isAdmin ? {} : router2("/"),
+              onClick: () => atSpecialPage || atAdminMemberLoginPage || isAdmin ? {} : router2("/ViewYata-React/"),
               children: /* @__PURE__ */ jsx(
                 "div",
                 {
@@ -22908,7 +22908,6 @@ const Main = () => {
   const [carousel, setCarousel] = reactExports.useState([]);
   const [banners, setBanner] = reactExports.useState(initBannerList);
   const size = useWindowSize();
-  console.log("({}).:", { "VITE_URL": "/", "VITE_IMGURL": "./img", "VITE_NEXTAUTH_URL": "https://eshop.yata.hk", "VITE_APP_API_URL": "https://yatacustomerappserviceprod.azurewebsites.net/api", "VITE_APP_API_URL_DLVY": "https://yataeshopcustomerappserviceprod.azurewebsites.net/api", "VITE_EC_API_URL": "https://yataapi.azurefd.net/eshop/api", "VITE_CS_API_URL": "https://prod-19.southeastasia.logic.azure.com:443/workflows/91662aa6f1944fa884bab2a5c9274a8b/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=99Uon6YuK9MUQYueNnSOsRbRILfs5DMP_TYEuUrTy2g", "VITE_PAYMENT_API_URL": "https://recon.cityline.com/ws/b2cPay", "VITE_PAYMENT_API_TOKEN": "28253eac-fd1b-470c-aa87-eb8a63967367", "VITE_ENCRYPTED_SECRET": "yata-eshop-can-satisfy-all-your-need", "VITE_AUTH_TENANT_NAME": "yatafans", "VITE_AUTH_CLIENT_ID": "2a8e3ebb-a320-4091-aaf4-ad73dbc24304", "VITE_AUTH_CRM_SCOPE": "https://yatafans.onmicrosoft.com/f10e1c0a-7e6f-4a4f-86cc-f29123a38800/YataFansAppBackend", "VITE_AUTH_CLIENT_SECRET": "FvW8Q~42f94YV.nqP~QN4GiA-XgVwf4vpnRVgc~s", "VITE_AUTH_CLIENT_SECRET_ID": "1c51cd3e-d888-4b8f-8324-d17c4b01c388", "BASE_URL": "./", "MODE": "production", "DEV": false, "PROD": true, "SSR": false });
   reactExports.useEffect(() => {
     dispatch(onLoading());
     localStorage.getItem("pickup_location_code");
