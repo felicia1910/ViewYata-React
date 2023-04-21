@@ -11726,7 +11726,7 @@ const {
 const configReducer = configSlice.reducer;
 const selectCategoryList = (state) => state.config.categoryList;
 const initialState = {
-  imgUrl: "/public/img"
+  imgUrl: "./img"
 };
 const IconfigSlice = createSlice({
   name: "Iconfig",
@@ -15314,7 +15314,7 @@ var MsalProviderActionType;
   MsalProviderActionType2["EVENT"] = "EVENT";
 })(MsalProviderActionType || (MsalProviderActionType = {}));
 const useMsal = () => reactExports.useContext(MsalContext);
-const scope = {}.AUTH_CRM_SCOPE;
+const scope = "https://yatafans.onmicrosoft.com/f10e1c0a-7e6f-4a4f-86cc-f29123a38800/YataFansAppBackend";
 const silentRequest = {
   scopes: [scope, "openid", "offline_access"]
 };
@@ -15361,7 +15361,7 @@ const LoginButton = () => {
           ref: accountBtnRef,
           className: "flex flex-col items-center justify-center w-full h-full p-1 transition-colors duration-300 ease-in-out rounded-lg lg:p-2 lg:flex-row lg:bg-yata-deep lg:hover:bg-yata group",
           onClick: (e2) => {
-            e2.preventDefault();
+            closeDrawer();
             router2("/account");
           },
           children: [
@@ -21531,6 +21531,7 @@ const ContentList = () => {
   const router2 = useNavigate();
   const location = useLocation();
   const dispatch = useAppDispatch();
+  const imgUrl = useAppSelector(selectImgUrl);
   const windowType = useAppSelector(selectWindowSize);
   const categoryList = useAppSelector(selectCategoryList);
   const filterList = useAppSelector(selectFilterList);
@@ -21681,189 +21682,186 @@ const ContentList = () => {
   console.log("filter list in redux: ", filterList);
   console.log("keep filter: ", keepFilter, onPage);
   console.log("category id: ", categoryId);
-  return /* @__PURE__ */ jsxs(Fragment, { children: [
-    /* @__PURE__ */ jsx(Loading, { isLoading: catFilterList == null }),
-    /* @__PURE__ */ jsxs("div", { className: "h-auto", children: [
-      /* @__PURE__ */ jsx(CategoryTitle, { query }),
-      /* @__PURE__ */ jsxs("div", { className: "w-full h-auto px-1 mb-4 transition-all duration-300 ease-in-out rangeLg:px-20 rangeXl:px-24 2xl:px-48 lg:bg-grey-light lg:mb-6", children: [
-        pathLevel == 1 && /* @__PURE__ */ jsx("div", { className: "grid grid-cols-3 mx-auto rangeXl:grid-cols-4 2xl:grid-cols-5", children: deptList.length > 0 && deptList.map((dept, idx) => /* @__PURE__ */ jsx(
-          Link,
+  return /* @__PURE__ */ jsx(Fragment, { children: /* @__PURE__ */ jsxs("div", { className: "h-auto", children: [
+    /* @__PURE__ */ jsx(CategoryTitle, { query }),
+    /* @__PURE__ */ jsxs("div", { className: "w-full h-auto px-1 mb-4 transition-all duration-300 ease-in-out rangeLg:px-20 rangeXl:px-24 2xl:px-48 lg:bg-grey-light lg:mb-6", children: [
+      pathLevel == 1 && /* @__PURE__ */ jsx("div", { className: "grid grid-cols-3 mx-auto rangeXl:grid-cols-4 2xl:grid-cols-5", children: deptList.length > 0 && deptList.map((dept, idx) => /* @__PURE__ */ jsx(
+        Link,
+        {
+          to: `/category/${dept.url_path}`,
+          children: /* @__PURE__ */ jsxs("div", { className: "mx-1 my-1 p-1 lg:m-0 border-[1px] lg:h-20 lg:p-4 lg:px-5 bg-white h-16 border-[#E5E5E5] cursor-pointer group rounded-md lg:rounded-none hover:bg-yata-mid-light hover:border-yata-deep", children: [
+            /* @__PURE__ */ jsxs("div", { className: "flex items-center w-full", children: [
+              /* @__PURE__ */ jsx("div", { className: "w-4/5 overflow-scroll text-xs font-bold whitespace-pre-wrap lg:mr-4 scrollbar-hide lg:overflow-hidden lg:w-auto lg:tracking-widest lg:text-base", children: dept.name }),
+              /* @__PURE__ */ jsx("div", { className: "w-1/5 lg:w-auto border-[1px] px-1 lg:px-2 lg:min-w-[2.25rem] flex justify-center font-semibold lg:font-normal rounded-sm border-[#E5E5E5] text-xs", children: dept.product_count })
+            ] }),
+            /* @__PURE__ */ jsx("div", { className: "text-sm lg:tracking-wider" })
+          ] })
+        },
+        `dept-tab-laptop-${idx}`
+      )) }),
+      onLaptop && /* @__PURE__ */ jsx(Fragment, { children: pathLevel > 1 && catFilterList && catFilterList.length > 0 && /* @__PURE__ */ jsx(
+        FilterMenu,
+        {
+          level: pathLevel,
+          query,
+          router: router2,
+          segmentList,
+          typeList,
+          catFilterInfo: catFilterList[0]
+        }
+      ) })
+    ] }),
+    categoryList.length > 0 && pathLevel > 0 && /* @__PURE__ */ jsxs(Fragment, { children: [
+      pathLevel == 1 && /* @__PURE__ */ jsx(Fragment, { children: /* @__PURE__ */ jsx("div", { className: "w-full px-2 mb-4 rangeLg:px-20 rangeXl:px-24 2xl:px-48 lg:mb-8", children: /* @__PURE__ */ jsx(LowerBanner, { images: banners }) }) }),
+      onLaptop && pathLevel > 1 && catFilterList && catFilterList.length > 0 && /* @__PURE__ */ jsx(FilteredResults, { catFilterInfo: catFilterList[0] }),
+      /* @__PURE__ */ jsx("div", { className: "w-full h-auto mb-4 transition-all ease-in-out rangeLg:px-20 rangeXl:px-24 2xl:px-48", children: /* @__PURE__ */ jsxs("div", { className: "flex items-center justify-between h-16 px-3 mb-2 text-lg font-bold", children: [
+        /* @__PURE__ */ jsxs(
+          "div",
           {
-            to: `/category/${dept.url_path}`,
-            children: /* @__PURE__ */ jsxs("div", { className: "mx-1 my-1 p-1 lg:m-0 border-[1px] lg:h-20 lg:p-4 lg:px-5 bg-white h-16 border-[#E5E5E5] cursor-pointer group rounded-md lg:rounded-none hover:bg-yata-mid-light hover:border-yata-deep", children: [
-              /* @__PURE__ */ jsxs("div", { className: "flex items-center w-full", children: [
-                /* @__PURE__ */ jsx("div", { className: "w-4/5 overflow-scroll text-xs font-bold whitespace-pre-wrap lg:mr-4 scrollbar-hide lg:overflow-hidden lg:w-auto lg:tracking-widest lg:text-base", children: dept.name }),
-                /* @__PURE__ */ jsx("div", { className: "w-1/5 lg:w-auto border-[1px] px-1 lg:px-2 lg:min-w-[2.25rem] flex justify-center font-semibold lg:font-normal rounded-sm border-[#E5E5E5] text-xs", children: dept.product_count })
-              ] }),
-              /* @__PURE__ */ jsx("div", { className: "text-sm lg:tracking-wider" })
-            ] })
-          },
-          `dept-tab-laptop-${idx}`
-        )) }),
-        onLaptop && /* @__PURE__ */ jsx(Fragment, { children: pathLevel > 1 && catFilterList && catFilterList.length > 0 && /* @__PURE__ */ jsx(
-          FilterMenu,
-          {
-            level: pathLevel,
-            query,
-            router: router2,
-            segmentList,
-            typeList,
-            catFilterInfo: catFilterList[0]
+            className: `transition-all ease-out duration-300 ${isCardLoading || totalCount == 0 ? "opacity-0" : "opacity-100"}`,
+            children: [
+              totalCount,
+              " 件產品"
+            ]
           }
-        ) })
-      ] }),
-      categoryList.length > 0 && pathLevel > 0 && /* @__PURE__ */ jsxs(Fragment, { children: [
-        pathLevel == 1 && /* @__PURE__ */ jsx(Fragment, { children: /* @__PURE__ */ jsx("div", { className: "w-full px-2 mb-4 rangeLg:px-20 rangeXl:px-24 2xl:px-48 lg:mb-8", children: /* @__PURE__ */ jsx(LowerBanner, { images: banners }) }) }),
-        onLaptop && pathLevel > 1 && catFilterList && catFilterList.length > 0 && /* @__PURE__ */ jsx(FilteredResults, { catFilterInfo: catFilterList[0] }),
-        /* @__PURE__ */ jsx("div", { className: "w-full h-auto mb-4 transition-all ease-in-out rangeLg:px-20 rangeXl:px-24 2xl:px-48", children: /* @__PURE__ */ jsxs("div", { className: "flex items-center justify-between h-16 px-3 mb-2 text-lg font-bold", children: [
-          /* @__PURE__ */ jsxs(
-            "div",
+        ),
+        /* @__PURE__ */ jsxs("div", { className: "relative flex lg:hidden", children: [
+          /* @__PURE__ */ jsx(
+            "button",
             {
-              className: `transition-all ease-out duration-300 ${isCardLoading || totalCount == 0 ? "opacity-0" : "opacity-100"}`,
-              children: [
-                totalCount,
-                " 件產品"
-              ]
+              className: "box-border flex items-center justify-center w-8 h-8 mr-2 border-[1px] rounded-md border-yata-brown",
+              onClick: () => {
+                dispatch(setKeepFilter(true));
+                router2({ pathname: "/category/filter", search: location.pathname });
+              },
+              children: /* @__PURE__ */ jsx(
+                "img",
+                {
+                  src: imgUrl + "/mobile/more-detail.svg",
+                  className: "h-2 w-4"
+                }
+              )
             }
           ),
-          /* @__PURE__ */ jsxs("div", { className: "relative flex lg:hidden", children: [
-            /* @__PURE__ */ jsx(
-              "button",
-              {
-                className: "box-border flex items-center justify-center w-8 h-8 mr-2 border-[1px] rounded-md border-yata-brown",
-                onClick: () => {
-                  dispatch(setKeepFilter(true));
-                  router2({ pathname: "/category/filter", search: location.pathname });
-                },
-                children: /* @__PURE__ */ jsx(
-                  "img",
-                  {
-                    src: "/mobile/more-detail.svg",
-                    className: "h-2 w-4"
-                  }
-                )
-              }
-            ),
-            /* @__PURE__ */ jsx(
-              "button",
-              {
-                className: "box-border flex items-center justify-center w-8 h-8 transition-all duration-300 ease-in-out border rounded-md border-yata-brown",
-                style: { backgroundColor: openModal ? "#82A90E" : "#FFF" },
-                onClick: () => {
-                  setOpenModal(!openModal);
-                },
-                children: /* @__PURE__ */ jsx(UpDownSvg, { openModal })
-              }
-            ),
-            /* @__PURE__ */ jsx(
-              "div",
-              {
-                className: "absolute right-0 z-20 w-40 p-1 transition-all duration-300 ease-in-out bg-white border rounded-md top-8 border-yata-brown",
-                style: openModal ? {
-                  visibility: "visible",
-                  opacity: 1
-                } : {
-                  visibility: "hidden",
-                  opacity: 0,
-                  pointerEvents: "none"
-                },
-                children: filterOptions.map((option, idx) => /* @__PURE__ */ jsx(
-                  FilterButton,
-                  {
-                    setOpenModal,
-                    setFilterText,
-                    filterText,
-                    setProductCards,
-                    name: option.name,
-                    buttonText: option.mobileName,
-                    buttonImg: option.img
-                  },
-                  `filter-option-mobile-${idx}`
-                ))
-              }
-            )
-          ] }),
+          /* @__PURE__ */ jsx(
+            "button",
+            {
+              className: "box-border flex items-center justify-center w-8 h-8 transition-all duration-300 ease-in-out border rounded-md border-yata-brown",
+              style: { backgroundColor: openModal ? "#82A90E" : "#FFF" },
+              onClick: () => {
+                setOpenModal(!openModal);
+              },
+              children: /* @__PURE__ */ jsx(UpDownSvg, { openModal })
+            }
+          ),
           /* @__PURE__ */ jsx(
             "div",
             {
-              className: `hidden space-x-4 lg:flex transition-opacity duration-300 ease-in-out ${isCardLoading || totalCount == 0 ? "opacity-0" : "opacity-100"} `,
+              className: "absolute right-0 z-20 w-40 p-1 transition-all duration-300 ease-in-out bg-white border rounded-md top-8 border-yata-brown",
+              style: openModal ? {
+                visibility: "visible",
+                opacity: 1
+              } : {
+                visibility: "hidden",
+                opacity: 0,
+                pointerEvents: "none"
+              },
               children: filterOptions.map((option, idx) => /* @__PURE__ */ jsx(
                 FilterButton,
                 {
+                  setOpenModal,
                   setFilterText,
                   filterText,
                   setProductCards,
                   name: option.name,
-                  buttonText: option.laptopName,
-                  buttonImg: option.img
+                  buttonText: option.mobileName,
+                  buttonImg: imgUrl + option.img
                 },
-                `filter-option-laptop-${idx}`
+                `filter-option-mobile-${idx}`
               ))
             }
           )
-        ] }) }),
-        /* @__PURE__ */ jsx("div", { className: "w-full h-auto mb-12 transition-all ease-in-out underXs:px-4 rangeXs:px-6 rangeSm:px-8 rangeMd:px-6 rangeLg:px-20 rangeXl:px-24 2xl:px-48", children: /* @__PURE__ */ jsxs(
+        ] }),
+        /* @__PURE__ */ jsx(
           "div",
           {
-            className: "flex flex-wrap items-start justify-center w-full transition-all duration-200 ease-in-out lg:justify-start",
-            ref: containerRef,
-            children: [
-              /* @__PURE__ */ jsxs(
-                "div",
-                {
-                  className: "grid flex-wrap justify-center w-full grid-cols-2 gap-1 transition-all duration-200 ease-in-out lg:flex underSm:flex sm:justify-start rangeMd:grid-cols-4 underXs:grid-cols-1 rangeSm:grid-cols-3",
-                  children: [
-                    (isCardLoading || productCard == null) && [...Array(20)].map((_2, idx) => /* @__PURE__ */ jsx(reactExports.Fragment, { children: /* @__PURE__ */ jsx(CardLoading, {}) }, `skeleton-card-${idx}`)),
-                    productCard && productCard.length > 0 && productCard.map((card, idx) => /* @__PURE__ */ jsx(
-                      "div",
-                      {
-                        className: "flex justify-center transition-all duration-500 ease-in-out " + (isCardLoading ? "opacity-0 pointer-events-none " : "opacity-100"),
-                        children: /* @__PURE__ */ jsx(
-                          ItemCard,
-                          {
-                            detail: card,
-                            cardRef,
-                            categoryId
-                          }
-                        )
-                      },
-                      `product-card-${card.plu}-${idx}`
-                    ))
-                  ]
-                }
-              ),
-              productCard && productCard.length == 0 && /* @__PURE__ */ jsx(
-                "div",
-                {
-                  className: "flex items-center justify-center w-full px-6 text-lg font-bold text-center transition-all duration-300 ease-in-out " + (isCardLoading ? "h-0 invisible opacity-0" : "h-60 lg:h-40 visible opacity-100"),
-                  children: "不好意思，我們未能找到符合你篩選的結果，請重新再試。"
-                }
-              ),
-              /* @__PURE__ */ jsx("div", { className: "pagination-container", children: productCard && productCard.length > 0 && /* @__PURE__ */ jsx(
-                ReactPaginate,
-                {
-                  breakLabel: "...",
-                  nextLabel: " >",
-                  onPageChange: handlePageClick,
-                  pageRangeDisplayed: 3,
-                  pageCount,
-                  previousLabel: "< ",
-                  forcePage: currentItems,
-                  marginPagesDisplayed: 1,
-                  containerClassName: "pagination",
-                  activeClassName: "active",
-                  previousClassName: "pagination-item",
-                  nextClassName: "pagination-item",
-                  activeLinkClassName: "active",
-                  pageLinkClassName: "pagination-item"
-                }
-              ) })
-            ]
+            className: `hidden space-x-4 lg:flex transition-opacity duration-300 ease-in-out ${isCardLoading || totalCount == 0 ? "opacity-0" : "opacity-100"} `,
+            children: filterOptions.map((option, idx) => /* @__PURE__ */ jsx(
+              FilterButton,
+              {
+                setFilterText,
+                filterText,
+                setProductCards,
+                name: option.name,
+                buttonText: option.laptopName,
+                buttonImg: imgUrl + option.img
+              },
+              `filter-option-laptop-${idx}`
+            ))
           }
-        ) })
-      ] })
+        )
+      ] }) }),
+      /* @__PURE__ */ jsx("div", { className: "w-full h-auto mb-12 transition-all ease-in-out underXs:px-4 rangeXs:px-6 rangeSm:px-8 rangeMd:px-6 rangeLg:px-20 rangeXl:px-24 2xl:px-48", children: /* @__PURE__ */ jsxs(
+        "div",
+        {
+          className: "flex flex-wrap items-start justify-center w-full transition-all duration-200 ease-in-out lg:justify-start",
+          ref: containerRef,
+          children: [
+            /* @__PURE__ */ jsxs(
+              "div",
+              {
+                className: "grid flex-wrap justify-center w-full grid-cols-2 gap-1 transition-all duration-200 ease-in-out lg:flex underSm:flex sm:justify-start rangeMd:grid-cols-4 underXs:grid-cols-1 rangeSm:grid-cols-3",
+                children: [
+                  (isCardLoading || productCard == null) && [...Array(20)].map((_2, idx) => /* @__PURE__ */ jsx(reactExports.Fragment, { children: /* @__PURE__ */ jsx(CardLoading, {}) }, `skeleton-card-${idx}`)),
+                  productCard && productCard.length > 0 && productCard.map((card, idx) => /* @__PURE__ */ jsx(
+                    "div",
+                    {
+                      className: "flex justify-center transition-all duration-500 ease-in-out " + (isCardLoading ? "opacity-0 pointer-events-none " : "opacity-100"),
+                      children: /* @__PURE__ */ jsx(
+                        ItemCard,
+                        {
+                          detail: card,
+                          cardRef,
+                          categoryId
+                        }
+                      )
+                    },
+                    `product-card-${card.plu}-${idx}`
+                  ))
+                ]
+              }
+            ),
+            productCard && productCard.length == 0 && /* @__PURE__ */ jsx(
+              "div",
+              {
+                className: "flex items-center justify-center w-full px-6 text-lg font-bold text-center transition-all duration-300 ease-in-out " + (isCardLoading ? "h-0 invisible opacity-0" : "h-60 lg:h-40 visible opacity-100"),
+                children: "不好意思，我們未能找到符合你篩選的結果，請重新再試。"
+              }
+            ),
+            /* @__PURE__ */ jsx("div", { className: "pagination-container", children: productCard && productCard.length > 0 && /* @__PURE__ */ jsx(
+              ReactPaginate,
+              {
+                breakLabel: "...",
+                nextLabel: " >",
+                onPageChange: handlePageClick,
+                pageRangeDisplayed: 3,
+                pageCount,
+                previousLabel: "< ",
+                forcePage: currentItems,
+                marginPagesDisplayed: 1,
+                containerClassName: "pagination",
+                activeClassName: "active",
+                previousClassName: "pagination-item",
+                nextClassName: "pagination-item",
+                activeLinkClassName: "active",
+                pageLinkClassName: "pagination-item"
+              }
+            ) })
+          ]
+        }
+      ) })
     ] })
-  ] });
+  ] }) });
 };
 const Category = () => {
   return /* @__PURE__ */ jsx(ContentList, {});
@@ -21889,7 +21887,7 @@ const prod = {
   ]
 };
 const homeList = [
-  { content: "首頁", path: "/", component: Home },
+  { content: "首頁", path: "/ViewYata-React/", component: Home },
   { content: "登陸", path: "/account", component: Login },
   { content: "店舖位置", path: "/store-locations", component: StoreLocations },
   { content: "聯絡我們", path: "/contact-us", component: ContactUs }
@@ -22185,7 +22183,7 @@ const ShoppingCartButton = ({ window: window2 }) => {
           onClick: () => {
             router2("/account");
           },
-          children: /* @__PURE__ */ jsx(Link, { to: '/account"', children: /* @__PURE__ */ jsxs(Fragment, { children: [
+          children: /* @__PURE__ */ jsx(Link, { to: "/account", children: /* @__PURE__ */ jsxs(Fragment, { children: [
             /* @__PURE__ */ jsx("div", { className: "relative flex items-center object-contain lg:w-5 w-8 aspect-[14/13]", children: /* @__PURE__ */ jsx("img", { src: onMobile ? imgUrl + "/mobile/cart.svg" : imgUrl + `/homepage/navbar/cart.svg`, alt: "shopping-cart", className: "transition duration-300 ease-in-out w-10 h-9" }) }),
             shoppingCartItem > 0 && /* @__PURE__ */ jsx("div", { className: "absolute right-0 flex items-center justify-center w-4 h-4 overflow-hidden bg-red-500 rounded-full lg:w-5 lg:h-5 lg:-top-2 lg:-right-2 -top-1", children: /* @__PURE__ */ jsxs("span", { className: "text-xs text-white", children: [
               shoppingCartItem,
@@ -22694,7 +22692,7 @@ const Drawer = ({ isOpen, setIsOpen }) => {
                   {
                     onClick: () => dispatch(closeDrawer()),
                     className: "flex items-center",
-                    children: /* @__PURE__ */ jsx("img", { src: imgUrl + "common/arrow/arrow-left-solid.svg", alt: "pic", className: "w-7 h-7" })
+                    children: /* @__PURE__ */ jsx("img", { src: imgUrl + "/common/arrow/arrow-left-solid.svg", alt: "pic", className: "w-7 h-7" })
                   }
                 ),
                 /* @__PURE__ */ jsxs("div", { className: "flex", children: [
@@ -22780,7 +22778,7 @@ const __vitePreload = function preload(baseModule, deps, importerUrl) {
   })).then(() => baseModule());
 };
 const NavBarButtons = reactExports.lazy(() => __vitePreload(() => Promise.resolve().then(() => NavBarButtons$2), true ? void 0 : void 0));
-const SessionModal = reactExports.lazy(() => __vitePreload(() => import("./SessionExpiredModal-fdc39583.js"), true ? [] : void 0));
+const SessionModal = reactExports.lazy(() => __vitePreload(() => import("./SessionExpiredModal-114422cc.js"), true ? [] : void 0));
 const Navbar = () => {
   useAppDispatch();
   useNavigate();
@@ -22908,6 +22906,7 @@ const Main = () => {
   const [carousel, setCarousel] = reactExports.useState([]);
   const [banners, setBanner] = reactExports.useState(initBannerList);
   const size = useWindowSize();
+  console.log("({}).:", { "VITE_IMGURL": "./img", "VITE_URL": "/ViewYata-React/", "VITE_NEXTAUTH_URL": "https://eshop.yata.hk", "VITE_APP_API_URL": "https://yatacustomerappserviceprod.azurewebsites.net/api", "VITE_APP_API_URL_DLVY": "https://yataeshopcustomerappserviceprod.azurewebsites.net/api", "VITE_EC_API_URL": "https://yataapi.azurefd.net/eshop/api", "VITE_CS_API_URL": "https://prod-19.southeastasia.logic.azure.com:443/workflows/91662aa6f1944fa884bab2a5c9274a8b/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=99Uon6YuK9MUQYueNnSOsRbRILfs5DMP_TYEuUrTy2g", "VITE_PAYMENT_API_URL": "https://recon.cityline.com/ws/b2cPay", "VITE_PAYMENT_API_TOKEN": "28253eac-fd1b-470c-aa87-eb8a63967367", "VITE_ENCRYPTED_SECRET": "yata-eshop-can-satisfy-all-your-need", "VITE_AUTH_TENANT_NAME": "yatafans", "VITE_AUTH_CLIENT_ID": "2a8e3ebb-a320-4091-aaf4-ad73dbc24304", "VITE_AUTH_CRM_SCOPE": "https://yatafans.onmicrosoft.com/f10e1c0a-7e6f-4a4f-86cc-f29123a38800/YataFansAppBackend", "VITE_AUTH_CLIENT_SECRET": "FvW8Q~42f94YV.nqP~QN4GiA-XgVwf4vpnRVgc~s", "VITE_AUTH_CLIENT_SECRET_ID": "1c51cd3e-d888-4b8f-8324-d17c4b01c388", "BASE_URL": "/", "MODE": "production", "DEV": false, "PROD": true, "SSR": false });
   reactExports.useEffect(() => {
     dispatch(onLoading());
     localStorage.getItem("pickup_location_code");
