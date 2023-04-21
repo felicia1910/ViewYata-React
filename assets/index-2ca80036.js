@@ -15361,8 +15361,8 @@ const LoginButton = () => {
           ref: accountBtnRef,
           className: "flex flex-col items-center justify-center w-full h-full p-1 transition-colors duration-300 ease-in-out rounded-lg lg:p-2 lg:flex-row lg:bg-yata-deep lg:hover:bg-yata group",
           onClick: (e2) => {
-            closeDrawer();
-            router2(`${"/ViewYata-React/"}account`);
+            e2.preventDefault();
+            router2("/account");
           },
           children: [
             isAdmin ? /* @__PURE__ */ jsx("div", { className: "relative w-5 h-5 lg:w-4 lg:hidden", children: /* @__PURE__ */ jsx("img", { src: imgUrl + "/myAccount/dropdownList/info-default.svg", alt: "pic", className: "object-contain" }) }) : /* @__PURE__ */ jsxs("div", { className: "relative w-8 h-8 lg:w-4 lg:h-4", children: [
@@ -15416,7 +15416,7 @@ const AddToCartPopup = ({ isAddToCart, setIsAddToCart }) => {
           /* @__PURE__ */ jsxs("div", { className: "z-30 flex flex-col items-start", children: [
             isAddToCart.success && /* @__PURE__ */ jsxs(Fragment, { children: [
               /* @__PURE__ */ jsx("span", { className: "text-xs text-black", children: "成功加到購物車" }),
-              /* @__PURE__ */ jsx(Link, { to: "/ViewYata-React/shopping-cart", children: /* @__PURE__ */ jsxs("div", { className: "flex items-center text-sm border-b text-yata-deep border-yata-deep", children: [
+              /* @__PURE__ */ jsx(Link, { to: "/shopping-cart", children: /* @__PURE__ */ jsxs("div", { className: "flex items-center text-sm border-b text-yata-deep border-yata-deep", children: [
                 /* @__PURE__ */ jsx("span", { className: "mr-1", children: "前往付款" }),
                 /* @__PURE__ */ jsx("div", { className: "w-[0.6rem] h-[0.6rem] flex items-center mr-1", children: /* @__PURE__ */ jsx(ChevronRightSvg, { fill: "#82A90E" }) })
               ] }) })
@@ -15456,7 +15456,7 @@ const ItemCard = ({ detail, cardRef, categoryId = 0, setTrigger }) => {
   }, [detail]);
   const likeChangeHandler = async (e2) => {
     e2.stopPropagation();
-    router2(`${"/ViewYata-React/"}account`);
+    router2("/account");
   };
   const toggleSubmit = async () => {
   };
@@ -15574,7 +15574,7 @@ function CategoryBox({ cats, row }) {
             "button",
             {
               className: `flex justify-end items-center my-auto pr-1 space-x-1 whitespace-nowrap lg:w-1/12 ml-1 mr-2`,
-              children: /* @__PURE__ */ jsx(Link, { to: { pathname: `/ViewYata-React/category/${row.url_path}` }, children: /* @__PURE__ */ jsxs("div", { className: "flex items-center", children: [
+              children: /* @__PURE__ */ jsx(Link, { to: { pathname: `/category/${row.url_path}` }, children: /* @__PURE__ */ jsxs("div", { className: "flex items-center", children: [
                 /* @__PURE__ */ jsx("span", { children: "更多" }),
                 /* @__PURE__ */ jsx(ChevronRightSvg, { height: 18, fill: row.button_color })
               ] }) })
@@ -16348,7 +16348,7 @@ function Store({ id: id2 }) {
       setWidth(window.innerWidth);
     }
     if (!onMobile) {
-      router2(`${"/ViewYata-React/"}store-locations`);
+      router2("/store-locations");
     }
   }, [windowType]);
   return /* @__PURE__ */ jsx(Fragment, { children: storeData && /* @__PURE__ */ jsx(Fragment, { children: /* @__PURE__ */ jsxs("div", { className: "flex flex-col justify-center pt-10 lg:flex-row lg:pl-10 lg:justify-start", children: [
@@ -17021,15 +17021,15 @@ Tnc.title = "條款及細則 | YATA eShop​";
 const shop = {
   title: "購物流程",
   list: [
-    { content: "eShop 簡介", path: "/ViewYata-React/about/eshop-info", component: EShopInfo },
-    { content: "購物流程", path: "/ViewYata-React/about/shopping-guideline", component: ShoppingGuideline },
-    { content: "送貨及運費", path: "/ViewYata-React/about/delivery", component: DeliveryAndSelfPick },
+    { content: "eShop 簡介", path: "/about/eshop-info", component: EShopInfo },
+    { content: "購物流程", path: "/about/shopping-guideline", component: ShoppingGuideline },
+    { content: "送貨及運費", path: "/about/delivery", component: DeliveryAndSelfPick },
     {
       content: "常見問題",
-      path: "/ViewYata-React/about/faq/surf-products",
+      path: "/about/faq/surf-products",
       component: SurfProductsFaq
     },
-    { content: "條款及細則", path: "/ViewYata-React/about/tnc", component: Tnc }
+    { content: "條款及細則", path: "/about/tnc", component: Tnc }
   ]
 };
 const TncLayout = ({ children, isRequired, title }) => {
@@ -17307,7 +17307,7 @@ const tc = {
   list: [
     {
       content: "訂購條款",
-      path: "/ViewYata-React/about/tnc/purchase",
+      path: "/about/tnc/purchase",
       route: "/tnc/default/purchase-brown.png",
       active: "/tnc/selected/purchase-white.png",
       ratio: "10/8",
@@ -17316,7 +17316,7 @@ const tc = {
     },
     {
       content: "一般送貨條款",
-      path: "/ViewYata-React/about/tnc/delivery",
+      path: "/about/tnc/delivery",
       route: "/tnc/default/delivery-brown.png",
       active: "/tnc/selected/delivery-white.png",
       ratio: "11/10",
@@ -17325,7 +17325,7 @@ const tc = {
     },
     {
       content: "一般店舖自取條款",
-      path: "/ViewYata-React/about/tnc/self-pickup",
+      path: "/about/tnc/self-pickup",
       route: "/tnc/default/pickup-brown.png",
       active: "/tnc/selected/pickup-white.png",
       ratio: "19/22",
@@ -17334,7 +17334,7 @@ const tc = {
     },
     {
       content: "一般退換條款",
-      path: "/ViewYata-React/about/tnc/refund",
+      path: "/about/tnc/refund",
       route: "/tnc/default/refund-brown.png",
       active: "/tnc/selected/refund-white.png",
       ratio: "1/1",
@@ -17343,7 +17343,7 @@ const tc = {
     },
     {
       content: "私隱政策聲明",
-      path: "/ViewYata-React/about/tnc/privacy",
+      path: "/about/tnc/privacy",
       route: "/tnc/default/privacy-brown.png",
       active: "/tnc/selected/privacy-white.png",
       ratio: "19/20",
@@ -17993,7 +17993,7 @@ const faq = {
   list: [
     {
       content: "瀏覽商品",
-      path: "/ViewYata-React/about/faq/surf-products",
+      path: "/about/faq/surf-products",
       route: "/faq/sidebar/BrowseProducts-Brown.png",
       active: "/faq/sidebar/BrowseProducts-White.png",
       id: "1",
@@ -18001,7 +18001,7 @@ const faq = {
     },
     {
       content: "送貨上門",
-      path: "/ViewYata-React/about/faq/delivery",
+      path: "/about/faq/delivery",
       route: "/faq/sidebar/Delivery-Brown.png",
       active: "/faq/sidebar/Delivery-White.png",
       id: "2",
@@ -18009,7 +18009,7 @@ const faq = {
     },
     {
       content: "店舖自取",
-      path: "/ViewYata-React/about/faq/self-pickup",
+      path: "/about/faq/self-pickup",
       route: "/faq/sidebar/Pickup-Brown.png",
       active: "/faq/sidebar/Pickup-White.png",
       id: "3",
@@ -18017,7 +18017,7 @@ const faq = {
     },
     {
       content: "會員登記",
-      path: "/ViewYata-React/about/faq/registration",
+      path: "/about/faq/registration",
       route: "/faq/sidebar/Member Registration-Brown.png",
       active: "/faq/sidebar/Member Registration-White.png",
       id: "4",
@@ -18025,7 +18025,7 @@ const faq = {
     },
     {
       content: "訂購",
-      path: "/ViewYata-React/about/faq/purchase",
+      path: "/about/faq/purchase",
       route: "/faq/sidebar/Order-Brown.png",
       active: "/faq/sidebar/Order-White.png",
       id: "5",
@@ -18033,7 +18033,7 @@ const faq = {
     },
     {
       content: "結賬及付款",
-      path: "/ViewYata-React/about/faq/payment",
+      path: "/about/faq/payment",
       route: "/faq/sidebar/Payment-Brown.png",
       active: "/faq/sidebar/Payment-White.png",
       id: "6",
@@ -18041,7 +18041,7 @@ const faq = {
     },
     {
       content: "推廣優惠及優惠碼",
-      path: "/ViewYata-React/about/faq/promo-code",
+      path: "/about/faq/promo-code",
       route: "/faq/sidebar/Payment-Brown.png",
       active: "/faq/sidebar/Payment-White.png",
       id: "7",
@@ -18049,7 +18049,7 @@ const faq = {
     },
     {
       content: "貨品退換",
-      path: "/ViewYata-React/about/faq/return-exchange",
+      path: "/about/faq/return-exchange",
       route: "/faq/sidebar/Return and Exchange-Brown.png",
       active: "/faq/sidebar/Return and Exchange-White.png",
       id: "8",
@@ -18057,7 +18057,7 @@ const faq = {
     },
     {
       content: "送禮果籃、禮籃",
-      path: "/ViewYata-React/about/faq/product-hamper",
+      path: "/about/faq/product-hamper",
       route: "/faq/sidebar/Special Order-Brown.png",
       active: "/faq/sidebar/Special Order-White.png",
       id: "8",
@@ -18065,7 +18065,7 @@ const faq = {
     },
     {
       content: "餐飲美食",
-      path: "/ViewYata-React/about/faq/product-dining",
+      path: "/about/faq/product-dining",
       route: "/faq/sidebar/Special Order-Brown.png",
       active: "/faq/sidebar/Special Order-White.png",
       id: "9",
@@ -20613,7 +20613,7 @@ const ProductDetail = () => {
       const catId = pathArr[pathArr.length - 1].split("id=")[1] ?? 0;
       const quoteType = location.pathname.split("quote_type=")[1];
       if (!productId) {
-        router2(`${"/ViewYata-React/"}404`);
+        router2("/404");
         return;
       } else {
         if (storedPlu && storedPlu !== productId) {
@@ -20632,7 +20632,7 @@ const ProductDetail = () => {
           })
         );
         if (res.type == "product/detail/rejected" || !res.payload) {
-          router2(`${"/ViewYata-React/"}404`);
+          router2("/404");
         }
         const detail = res.payload;
         if (detail.urlPath && detail.categoryId) {
@@ -21867,7 +21867,7 @@ const Category = () => {
   return /* @__PURE__ */ jsx(ContentList, {});
 };
 const catPath = {
-  path: `/ViewYata-React/category/:category`,
+  path: `/category/:category`,
   component: Category,
   department: {
     path: ":department",
@@ -21883,14 +21883,16 @@ const catPath = {
 const prod = {
   title: "商品",
   list: [
-    { content: "商品", path: "/ViewYata-React/product/:id", component: ProductDetail }
+    { content: "商品", path: "/product/:id", component: ProductDetail }
   ]
 };
 const homeList = [
-  { content: "首頁", path: "/ViewYata-React/", component: Home },
-  { content: "登陸", path: `${"/ViewYata-React/"}account`, component: Login },
-  { content: "店舖位置", path: `${"/ViewYata-React/"}store-locations`, component: StoreLocations },
-  { content: "聯絡我們", path: `${"/ViewYata-React/"}contact-us`, component: ContactUs }
+  { content: "首頁", path: "", component: Home },
+  { content: "首頁", path: "*", component: Home },
+  { content: "首頁", path: "/", component: Home },
+  { content: "登陸", path: "/account", component: Login },
+  { content: "店舖位置", path: "/store-locations", component: StoreLocations },
+  { content: "聯絡我們", path: "/contact-us", component: ContactUs }
 ];
 const routerList = () => {
   let routers = [];
@@ -22020,7 +22022,7 @@ const OtherButtons = ({ window: window2 }) => {
         ${onLaptop && "hidden lg:flex lg:flex-row " + (atPaymentPage || atAdminLoginPage || isAdmin ? `${atPaymentPage || atAdminLoginPage ? "w-0 " : "w-80 "} invisible opacity-0 ` : "w-80 visible opacity-100 ")}
         ${onMobile && "flex flex-col w-28 "}`,
       children: [
-        /* @__PURE__ */ jsx(Link, { to: "/ViewYata-React/store-locations", children: /* @__PURE__ */ jsxs(
+        /* @__PURE__ */ jsx(Link, { to: "/store-locations", children: /* @__PURE__ */ jsxs(
           "div",
           {
             className: "flex items-center justify-center mb-1 lg:mb-0 lg:mx-4 md:mx-2 group " + (isLoading && "pointer-events-none"),
@@ -22047,7 +22049,7 @@ const OtherButtons = ({ window: window2 }) => {
             ]
           }
         ) }),
-        /* @__PURE__ */ jsx(Link, { to: "/ViewYata-React/contact-us", children: /* @__PURE__ */ jsxs(
+        /* @__PURE__ */ jsx(Link, { to: "/contact-us", children: /* @__PURE__ */ jsxs(
           "div",
           {
             className: "flex items-center justify-center mb-1 lg:mb-0 lg:mx-4 md:mx-2 group" + (isLoading && "pointer-events-none"),
@@ -22181,9 +22183,9 @@ const ShoppingCartButton = ({ window: window2 }) => {
         ${onMobile ? "bg-white mr-1 pr-1" : "bg-yata-deep hover:bg-yata p-2 pr-3 "}
         `,
           onClick: () => {
-            router2(`${"/ViewYata-React/"}account`);
+            router2("/account");
           },
-          children: /* @__PURE__ */ jsx(Link, { to: `${"/ViewYata-React/"}account`, children: /* @__PURE__ */ jsxs(Fragment, { children: [
+          children: /* @__PURE__ */ jsx(Link, { to: '/account"', children: /* @__PURE__ */ jsxs(Fragment, { children: [
             /* @__PURE__ */ jsx("div", { className: "relative flex items-center object-contain lg:w-5 w-8 aspect-[14/13]", children: /* @__PURE__ */ jsx("img", { src: onMobile ? imgUrl + "/mobile/cart.svg" : imgUrl + `/homepage/navbar/cart.svg`, alt: "shopping-cart", className: "transition duration-300 ease-in-out w-10 h-9" }) }),
             shoppingCartItem > 0 && /* @__PURE__ */ jsx("div", { className: "absolute right-0 flex items-center justify-center w-4 h-4 overflow-hidden bg-red-500 rounded-full lg:w-5 lg:h-5 lg:-top-2 lg:-right-2 -top-1", children: /* @__PURE__ */ jsxs("span", { className: "text-xs text-white", children: [
               shoppingCartItem,
@@ -22378,8 +22380,7 @@ const DropDownList = ({
                         setActiveType(null);
                       },
                       onClick: () => {
-                        router2(`${"/ViewYata-React/"}account`);
-                        router2(`${"/ViewYata-React/"}category/${dept.url_path}`);
+                        router2("/category/" + dept.url_path);
                         toggleModalClose();
                       },
                       children: [
@@ -22420,7 +22421,7 @@ const DropDownList = ({
                           className: "py-1 my-1 pl-3 whitespace-nowrap w-full text-sm rounded-l-full cursor-pointer flex group justify-between transition-all ease-in-out duration-200 " + (activeType === idx ? "bg-white" : ""),
                           onMouseOver: () => setActiveType(idx),
                           onClick: () => {
-                            router2("/ViewYata-React/category/" + segment.url_path);
+                            router2("/category/" + segment.url_path);
                             toggleModalClose();
                             setActiveDept ? setActiveDept(null) : {};
                           },
@@ -22693,7 +22694,7 @@ const Drawer = ({ isOpen, setIsOpen }) => {
                   {
                     onClick: () => dispatch(closeDrawer()),
                     className: "flex items-center",
-                    children: /* @__PURE__ */ jsx("img", { src: imgUrl + "/common/arrow/arrow-left-solid.svg", alt: "pic", className: "w-7 h-7" })
+                    children: /* @__PURE__ */ jsx("img", { src: imgUrl + "common/arrow/arrow-left-solid.svg", alt: "pic", className: "w-7 h-7" })
                   }
                 ),
                 /* @__PURE__ */ jsxs("div", { className: "flex", children: [
@@ -22735,8 +22736,8 @@ const Drawer = ({ isOpen, setIsOpen }) => {
   ) });
 };
 const scriptRel = "modulepreload";
-const assetsURL = function(dep) {
-  return "/" + dep;
+const assetsURL = function(dep, importerUrl) {
+  return new URL(dep, importerUrl).href;
 };
 const seen = {};
 const __vitePreload = function preload(baseModule, deps, importerUrl) {
@@ -22745,7 +22746,7 @@ const __vitePreload = function preload(baseModule, deps, importerUrl) {
   }
   const links = document.getElementsByTagName("link");
   return Promise.all(deps.map((dep) => {
-    dep = assetsURL(dep);
+    dep = assetsURL(dep, importerUrl);
     if (dep in seen)
       return;
     seen[dep] = true;
@@ -22778,8 +22779,8 @@ const __vitePreload = function preload(baseModule, deps, importerUrl) {
     }
   })).then(() => baseModule());
 };
-const NavBarButtons = reactExports.lazy(() => __vitePreload(() => Promise.resolve().then(() => NavBarButtons$2), true ? void 0 : void 0));
-const SessionModal = reactExports.lazy(() => __vitePreload(() => import("./SessionExpiredModal-40733abb.js"), true ? [] : void 0));
+const NavBarButtons = reactExports.lazy(() => __vitePreload(() => Promise.resolve().then(() => NavBarButtons$2), true ? void 0 : void 0, import.meta.url));
+const SessionModal = reactExports.lazy(() => __vitePreload(() => import("./SessionExpiredModal-479b4435.js"), true ? [] : void 0, import.meta.url));
 const Navbar = () => {
   useAppDispatch();
   useNavigate();
@@ -22866,7 +22867,7 @@ const Header = () => {
             "div",
             {
               className: "flex items-center justify-center transition-all ease-in-out duration-300 " + (atSpecialPage ? "w-full" : `w-48 lg:w-80 ${atAdminMemberLoginPage || isAdmin ? "" : "cursor-pointer "}`),
-              onClick: () => atSpecialPage || atAdminMemberLoginPage || isAdmin ? {} : router2("/ViewYata-React/"),
+              onClick: () => atSpecialPage || atAdminMemberLoginPage || isAdmin ? {} : router2("/"),
               children: /* @__PURE__ */ jsx(
                 "div",
                 {
@@ -22907,7 +22908,7 @@ const Main = () => {
   const [carousel, setCarousel] = reactExports.useState([]);
   const [banners, setBanner] = reactExports.useState(initBannerList);
   const size = useWindowSize();
-  console.log("({}).:", { "VITE_IMGURL": "./img", "VITE_URL": "/ViewYata-React/", "VITE_NEXTAUTH_URL": "https://eshop.yata.hk", "VITE_APP_API_URL": "https://yatacustomerappserviceprod.azurewebsites.net/api", "VITE_APP_API_URL_DLVY": "https://yataeshopcustomerappserviceprod.azurewebsites.net/api", "VITE_EC_API_URL": "https://yataapi.azurefd.net/eshop/api", "VITE_CS_API_URL": "https://prod-19.southeastasia.logic.azure.com:443/workflows/91662aa6f1944fa884bab2a5c9274a8b/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=99Uon6YuK9MUQYueNnSOsRbRILfs5DMP_TYEuUrTy2g", "VITE_PAYMENT_API_URL": "https://recon.cityline.com/ws/b2cPay", "VITE_PAYMENT_API_TOKEN": "28253eac-fd1b-470c-aa87-eb8a63967367", "VITE_ENCRYPTED_SECRET": "yata-eshop-can-satisfy-all-your-need", "VITE_AUTH_TENANT_NAME": "yatafans", "VITE_AUTH_CLIENT_ID": "2a8e3ebb-a320-4091-aaf4-ad73dbc24304", "VITE_AUTH_CRM_SCOPE": "https://yatafans.onmicrosoft.com/f10e1c0a-7e6f-4a4f-86cc-f29123a38800/YataFansAppBackend", "VITE_AUTH_CLIENT_SECRET": "FvW8Q~42f94YV.nqP~QN4GiA-XgVwf4vpnRVgc~s", "VITE_AUTH_CLIENT_SECRET_ID": "1c51cd3e-d888-4b8f-8324-d17c4b01c388", "BASE_URL": "/", "MODE": "production", "DEV": false, "PROD": true, "SSR": false });
+  console.log("({}).:", { "VITE_URL": "/", "VITE_IMGURL": "./img", "VITE_NEXTAUTH_URL": "https://eshop.yata.hk", "VITE_APP_API_URL": "https://yatacustomerappserviceprod.azurewebsites.net/api", "VITE_APP_API_URL_DLVY": "https://yataeshopcustomerappserviceprod.azurewebsites.net/api", "VITE_EC_API_URL": "https://yataapi.azurefd.net/eshop/api", "VITE_CS_API_URL": "https://prod-19.southeastasia.logic.azure.com:443/workflows/91662aa6f1944fa884bab2a5c9274a8b/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=99Uon6YuK9MUQYueNnSOsRbRILfs5DMP_TYEuUrTy2g", "VITE_PAYMENT_API_URL": "https://recon.cityline.com/ws/b2cPay", "VITE_PAYMENT_API_TOKEN": "28253eac-fd1b-470c-aa87-eb8a63967367", "VITE_ENCRYPTED_SECRET": "yata-eshop-can-satisfy-all-your-need", "VITE_AUTH_TENANT_NAME": "yatafans", "VITE_AUTH_CLIENT_ID": "2a8e3ebb-a320-4091-aaf4-ad73dbc24304", "VITE_AUTH_CRM_SCOPE": "https://yatafans.onmicrosoft.com/f10e1c0a-7e6f-4a4f-86cc-f29123a38800/YataFansAppBackend", "VITE_AUTH_CLIENT_SECRET": "FvW8Q~42f94YV.nqP~QN4GiA-XgVwf4vpnRVgc~s", "VITE_AUTH_CLIENT_SECRET_ID": "1c51cd3e-d888-4b8f-8324-d17c4b01c388", "BASE_URL": "./", "MODE": "production", "DEV": false, "PROD": true, "SSR": false });
   reactExports.useEffect(() => {
     dispatch(onLoading());
     localStorage.getItem("pickup_location_code");

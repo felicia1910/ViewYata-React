@@ -2801,7 +2801,7 @@ select {
   box-sizing: border-box;
   background-color: transparent;
   color: #6a3b0d;
-  background-image: url("/assets/chevron-down-brown-c5c7b272.svg");
+  background-image: url("./chevron-down-brown-c5c7b272.svg");
   background-size: 1rem;
   /* object-fit: contain; */
   background-repeat: no-repeat;
