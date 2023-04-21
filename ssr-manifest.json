@@ -110,7 +110,7 @@
   "\u0000vite/preload-helper": [
     "/assets/chevron-down-brown-c5c7b272.svg"
   ],
-  "SessionExpiredModal-114422cc.js": [
+  "SessionExpiredModal-40733abb.js": [
   ],
   "index.html": [
     "/assets/chevron-down-brown-c5c7b272.svg"
@@ -578,7 +578,7 @@
     "/assets/chevron-down-brown-c5c7b272.svg"
   ],
   "src/client/components/modal/SessionExpiredModal.tsx": [
-    "/assets/SessionExpiredModal-114422cc.js"
+    "/assets/SessionExpiredModal-40733abb.js"
   ],
   "src/client/components/modal/WarningModal.tsx": [
     "/assets/chevron-down-brown-c5c7b272.svg"
